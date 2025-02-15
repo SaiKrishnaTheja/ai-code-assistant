@@ -6,6 +6,11 @@ This project is an AI-powered coding assistant that can:
 - ⚡ **Optimize**: Improve performance and readability of Python code.
 - 🐞 **Debug**: Identify and fix errors in Python code.
 
+## 📌 Features
+- Uses Llama models via LangChain.
+- Automatically determines whether to **document, optimize, or debug** code.
+- Simple CLI interface for user interaction.
+
 The assistant runs **locally** using the **CodeLlama** model with Ollama, so you must have it installed on your system.
 
 ## 🚀 **Installation Guide**
@@ -19,21 +24,11 @@ Download and install Ollama from the official site:
 For macOS and Linux:
 ```bash
 curl -fsSL https://ollama.com/install.sh | sh
-
----
-
-## 📌 Features
-- Uses Llama models via LangChain.
-- Automatically determines whether to **document, optimize, or debug** code.
-- Simple CLI interface for user interaction.
-
----
+```
 
 ## 🛠️ Installation for LangChain
 
 ### 1️⃣ Install Dependencies
 ```bash
 pip install langchain-community
-
-
----
+```
