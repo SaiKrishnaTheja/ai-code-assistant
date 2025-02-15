@@ -25,29 +25,6 @@ def determine_task(user_request, code):
     print(task)
     return task if task in ["DOCUMENT", "OPTIMIZE", "DEBUG"] else "Sorry didn't quite understand the request. Could you be more specific?" # Default fallback
 
-def determine_task(user_request, code):
-    """
-    Uses Llama via LangChain to determine which task (DOCUMENT, OPTIMIZE, DEBUG) to perform.
-    """
-    prompt = f"""
-    You are an AI assistant for coding tasks. Based on the user request and the given code snippet, choose one task. 
-    The prompt might not include the exact words that match the task name. Be smart enough to identify the task.
-    Think twice before you select the task.
-
-    - DOCUMENT: If the user wants docstrings or documentation.
-    - OPTIMIZE: If the user wants performance or readability improvements. 
-    - DEBUG: If the user asks to find and fix errors.
-
-    User Request: "{user_request}"
-    Code snippet: "{code[:500]}"  # Limit snippet length
-
-    Respond with only one word: DOCUMENT, OPTIMIZE, or DEBUG.
-    """
-
-    task = llm.invoke(prompt).strip().upper()
-    print(task)
-    return task if task in ["DOCUMENT", "OPTIMIZE", "DEBUG"] else "Sorry didn't quite understand the request. Could you be more specific?" # Default fallback
-
 def document_code(source_code):
     """
     Generates docstrings for functions/classes missing documentation.
