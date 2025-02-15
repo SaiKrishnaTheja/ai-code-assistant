@@ -108,6 +108,7 @@ def main():
     print("=== AI Code Assistant (LangChain + Ollama) ===")
     user_request = input("Enter your request (e.g., 'document my code', 'optimize my code', 'find bugs'): ")
     filename = input("Enter the filename of the Python code to process: ").strip()
+    output_filename = input("Enter the output filename (for the processed code): ").strip()
 
     try:
         with open(filename, 'r', encoding="utf-8") as f:
@@ -116,7 +117,7 @@ def main():
         print(f"Error reading file: {e}")
         return
 
-    # Decide task
+    # Decide the task
     chosen_task = determine_task(user_request, source_code)
     print(f"\n[AI Decision] Task chosen: {chosen_task}\n")
 
@@ -133,7 +134,16 @@ def main():
     else:
         result = "No valid task selected."
 
-    print(result)
+    print("\nResult:\n", result)
+    
+    # Write the result to the specified output file.
+    try:
+        with open(output_filename, 'w', encoding="utf-8") as f:
+            f.write(result)
+        print(f"\nOutput successfully saved to {output_filename}")
+    except Exception as e:
+        print(f"\nError writing to file: {e}")
 
 if __name__ == "__main__":
     main()
+
